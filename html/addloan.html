@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.111.3">
+    <title>Add Loan</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
+
+    
+    
+    <!-- Custom styles for this template -->
+    <link href="css/addloan.css" rel="stylesheet">
+  </head>
+  <body class="bg-body-tertiary">
+    
+<div class="container">
+  <main>
+    <div class="py-5 text-center">
+      <img class="d-block mx-auto mb-4" src="https://static.vecteezy.com/system/resources/previews/012/042/292/original/warning-sign-icon-transparent-background-free-png.png" alt="" width="72">
+      <h2>Add a Loan</h2>
+      <!-- <p class="lead">Below is an example form built entirely with Bootstraps form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p> -->
+    </div>
+
+    
+      <div class="col-md-7 col-lg-8">
+        <h4 class="mb-3">Loan Details</h4>
+        <form class="needs-validation" novalidate>
+          <div class="row g-3">
+
+            <div class="col-12">
+              <label for="country" class="form-label">Name</label>
+              <select class="form-select" id="name" required>
+                <option value="">Choose...</option>
+                <option>United States</option>
+              </select>
+              <div class="invalid-feedback">
+                Please select a valid name.
+              </div>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="description" class="form-label">Description</label>
+              <input type="text" class="form-control" id="desc" placeholder="description">
+              <div class="invalid-feedback">
+                Please enter a valid description.
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="amount" class="form-label">Amount</label>
+              <input type="text" class="form-control" id="address" placeholder="amount" required>
+              <div class="invalid-feedback">
+                Please enter a valid amount.
+              </div>
+            </div>
+
+      
+
+            <button class="btn btn-primary btn-lg main-btn" type="submit">Confirm </button>
+
+          </div>
+
+          <!-- <hr class="my-4"> -->
+          
+          
+        </form>
+      </div>
+    </div>
+  </main>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
+
+      <script src="js/addloan.js"></script>
+  </body>
+</html>
