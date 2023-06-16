@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const ejs = require("ejs");
 const db = require("./controllers/firebaseAdmin");
+require('dotenv').config();
 
 // ----------------------------- Routes ----------------------------------------------------
 const authRoutes = require("./routes/authRoutes");
