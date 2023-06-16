@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nova+Mono&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/viewUsers.css">
+	<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <H2 class="topic">Users</H2>
+
+    <div class="user-content">
+
+    <% for (let i = 0; i<users.length; i++) { %>
+		<% if (users[i].amount > 0) { %>
+			<div class="loan">
+                <div class="loan-preview">
+                    <h3><%= users[i].user %></h3>
+                </div>
+                <div class="loan-amount debit">
+                    <h2><%= users[i].amount %></h2>
+                </div>
+            </div>
+		<%} else { %>
+			<div class="loan">
+                <div class="loan-preview">
+                    <h3><%= users[i].user %></h3>
+                </div>
+                <div class="loan-amount credit">
+                    <h2><%= users[i].amount %></h2>
+                </div>
+            </div>
+		<% } %>
+	  <% } %>
+</div>
+
+</body>
+</html>

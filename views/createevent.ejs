@@ -41,7 +41,7 @@
             <div class="col-12">
               <label for="description" class="form-label">Description</label>
               <div class="input-group has-validation">
-                <input type="text" class="form-control" id="description" placeholder="Description" required>
+                <input type="text" class="form-control" name="description" id="description" placeholder="Description" required>
               <div class="invalid-feedback">
                 Valid Description is required.
                 </div>
@@ -50,7 +50,7 @@
 
             <div class="col-12">
               <label for="amount" class="form-label">Amount</label>
-              <input type="number" class="form-control" id="amount" placeholder="0.00">
+              <input type="number" class="form-control" name="amount" id="amount" placeholder="0.00">
               <div class="invalid-feedback">
                 Please enter a valid amount.
               </div>
@@ -58,7 +58,7 @@
 
             <div class="col-12">
               <label for="paidUser" class="form-label">Paid</label>
-              <select class="form-select" id="paidUser" required>
+              <select name="paidUser" class="form-select" id="paidUser" required>
                 <option value="">Choose...</option>
                 <% for (let key in chooseUser) { %>
                     <option value="<%= key %>"><%= chooseUser[key] %></option>
@@ -78,7 +78,7 @@
               </div>
           <% } %>
 
-          <button class="btn btn-primary btn-lg main-btn" type="submit">Create Event</button>
+          <button id="submit-btn" class="btn btn-primary btn-lg main-btn" type="submit">Create Event</button>
         </form>
       </div>
     </div>
@@ -87,6 +87,81 @@
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
+
+<script>
+  const form = document.querySelector('form');
+    form.addEventListener('submit',async (e) => {
+        e.preventDefault();
+
+    const submit_btn = document.querySelector('#submit-btn');
+    const checkboxDivs = document.querySelectorAll('.form-check');
+
+    var tickedusers = [];
+
+    Array.from(checkboxDivs).forEach((checkboxDiv) => {
+      const checkbox = checkboxDiv.querySelector('.form-check-input');
+
+      if (checkbox.checked) {
+        console.log(checkbox.value);
+        const tickeduser = checkbox.value;
+        tickedusers.push(tickeduser);
+      }
+
+    });
+
+    const name = form.name.value;
+    const description = form.description.value;
+    const amount = form.amount.value;
+    const paidUser = form.paidUser.value;
+
+      
+
+      if (name != '' && description != '' && amount != '' && amount != 0 && paidUser != '' && tickedusers.length != 0) {
+
+        try {
+          const res = await fetch('/createevent',{
+              method: 'POST',
+              body: JSON.stringify({name:name,description:description,amount:amount,paidUser:paidUser,otherUsers:tickedusers}),
+              headers: {'Content-Type' : 'application/json'}
+          });
+
+          const data = await res.json();
+          console.log(data);
+          
+
+          if (data?.err) {
+              alert(data.err);
+          }
+
+          if (data?.success) {
+            console.log(data.success);
+            submit_btn.disabled = true;
+            location.reload();
+          }
+
+          // if (data.user) {
+          //   location.assign('/');
+          // }
+      } catch (err) {
+          console.log(err);
+      }
+      }
+    });
+
+    const paidSelector = document.getElementById('paidUser');
+
+    paidSelector.addEventListener("change", (e) => {
+      const checkboxes = document.querySelectorAll('.form-check-input');
+
+      Array.from(checkboxes).forEach((checkbox) => {
+      
+        checkbox.disabled = false;
+
+    });
+      const checkbox = document.getElementById(paidSelector.value);
+      checkbox.disabled = true;
+});
+</script>
 
       <script src="js/createevent.js"></script>
   </body>

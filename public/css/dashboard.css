@@ -1,15 +1,409 @@
-body {
-  background-image: linear-gradient(180deg, var(--bs-body-secondary-bg), var(--bs-body-bg) 100px, var(--bs-body-bg));
+.app_logo{
+    opacity:0.8;
+    margin-top: 10%;
 }
 
-.container {
-  max-width: 960px;
+.welcome-text{
+  color: #e9edff;
+  margin-top: 5%;
+  padding-left: 6%;
+  font-size: 135%;
+}
+
+.pricing-main{
+    font-family: 'Nova Mono', monospace;
+    margin: 0%;
+    font-size: 200%;
+}
+
+.pricing-main span{
+    font-size: 300%;
+}
+
+.card{
+    border-width: 10px;
+    color: rgb(255, 255, 255);
+}
+
+/* ======== Home Body Section (Start) =========== */
+.home-body-bg{
+  border-top-right-radius: 15%;
+  border-top-left-radius: 15%;
+  /* margin-left: -15px; */
+  padding: 10% 0% 5% 0%;
+  background-color: #e9edff16;
+}
+
+/* ======== Home Body Section (End) =========== */
+
+
+
+/* ======== Main Buttons (Start) =========== */
+
+.main-btn-container {
+  margin-top: 5%;
+  display: flex;
+  padding: 0% 7.5% 0% 7.5%;
+  width: 100%;
+  justify-content: center;
+  gap: 5%;
+}
+
+.button-card {
+  width: 30%;
+  position: relative;
+  border-radius: 16px;
+  /* background: radial-gradient(circle, rgb(95, 164, 225) 0%, rgb(98, 105, 249) 100%); */
+  /* background :radial-gradient(circle, rgb(91, 91, 91), rgb(255, 255, 255)); */
+  border-style: none;
+  /* background-color: #03294f; */
+  background-color: #e7ebf00e;
+  /* background: radial-gradient(circle, rgb(95, 164, 225) 0%, rgb(98, 105, 249) 100%); */
+  transition: 0.5s;
+  background-size: 100% auto;   
+  text-align: center;
+}
+
+.button-card a::after {
+  position: absolute;
+  inset-block: 0;
+  inset-inline: 0;
+  cursor: pointer;
+}
+
+.button-card:hover{
+  background: radial-gradient(circle, rgb(95, 164, 225) 0%, rgb(98, 105, 249) 100%);
+}
+
+.button-card img {
+  max-width: 100%;
+  transform-origin: center;
+  transform: scale(var(--img-scale));
+  transition: transform 0.4s ease-in-out;
+}
+.fa-2xl {
+    margin-top: 20%;
+    font-size: 200%;
+    line-height: 100%;
+    vertical-align: -0.1875em;
+}
+
+.article-body {
+  color: #fff;
+  font-size:70%;
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: 10%;
+}
+
+.button-card a:focus {
+  outline: 1px dotted #28666e;
+}
+
+.button-card:has(:hover, :focus) {
+  --img-scale: 1.1;
+  --title-color: #28666e;
+  --link-icon-translate: 0;
+  --link-icon-opacity: 1;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+/* ======== Main Buttons (End)   =========== */
+
+.btn{
+    background :linear-gradient(90deg, rgba(48, 5, 134, 0.414) 0%, rgba(0, 69, 189, 0.501) 36%, rgba(40, 77, 213, 0.587) 67%);
+    border-style: none;
+}
+
+.btn:hover{
+    background-color: rgb(118, 60, 195);
+}
+
+.main-btn-section{
+    padding: 0% 10% 0 10%;
+}
+
+.btn-main {
+    color: #fff;
+    height: 100px;
+    margin: 3% 0% 3% 0%;
 }
 
 .pricing-header {
-  max-width: 700px;
+    max-width: 700px;
+
+}
+.font-lg {
+    font-size: 300%;
 }
 
-.font-lg {
-  font-size: 300%;
+/* ============= LOAN CARD ================= */
+
+.align {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.align__item {
+    display: flex;
+    justify-content:center;
+}
+
+.text {
+    text-align: center;
+}
+
+/* --> block verticle scroll */
+.row {
+   --bs-gutter-x: 0;
+}
+
+.Loan_card {
+  border-radius: 30px;
+  border-width: 1px;
+  background-image: linear-gradient(to right, #4b6abf 0%, #a0b2ec  80%);
+  background-size: 200% auto;
+  transition: 0.5s;
+  width: 85%;
+  /* background: linear-gradient(90deg, rgba(75, 130, 200, 0.902) 0%, rgba(49, 71, 149, 0.9) 67%); */
+  color:rgb(255, 255, 255);
+  margin: 2% 0 5% 0;
+  padding: 2%;
+  font-family: Abel;
+}
+
+.Loan_card__title {
+    color: #fafafa;
+    float: left;
+    font-size: 100%;
+  }
+
+.grid {
+  overflow-x: hidden;
+  margin: 0 auto;
+  max-width: 100%;
+  width: 100%;
+}
+
+
+/* ============= NAV BAR ==================== */
+.wrapper{
+  position: fixed;
+  top: 0;
+  /*left: -100%;*/
+  right: -100%;
+  height: 100%;
+  width: 100%;
+  background: #020202ef;
+  /*background: linear-gradient(90deg, #f92c78, #4114a1);*/
+  /* background: linear-gradient(375deg, #1cc7d0, #2ede98); */
+ /* background: linear-gradient(-45deg, #e3eefe 0%, #efddfb 100%);*/
+  transition: all 0.6s ease-in-out;
+}
+#active:checked ~ .wrapper{
+  /*left: 0;*/
+  right:0;
+}
+.menu-btn{
+  position: absolute;
+  z-index: 2;
+  right: 20px;
+  /*left: 20px; */
+  top: 20px;
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  line-height: 50px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  /*color: #fff;*/
+  /*background: linear-gradient(90deg, #f92c78, #4114a1);*/
+  /* background: linear-gradient(375deg, #1cc7d0, #2ede98); */
+ /* background: linear-gradient(-45deg, #e3eefe 0%, #efddfb 100%); */
+  transition: all 0.3s ease-in-out;
+}
+.menu-btn span,
+.menu-btn:before,
+.menu-btn:after{
+	content: "";
+	position: absolute;
+	top: calc(50% - 1px);
+	left: 30%;
+	width: 40%;
+	border-bottom: 3px solid #a09ca5;
+	transition: transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.menu-btn:before{
+  transform: translateY(-8px);
+}
+.menu-btn:after{
+  transform: translateY(8px);
+}
+
+.close {
+	z-index: 1;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	transition: background .6s;
+}
+
+/* closing animation */
+#active:checked + .menu-btn span {
+	transform: scaleX(0);
+}
+#active:checked + .menu-btn:before {
+	transform: rotate(45deg);
+  border-color: #fff;
+}
+#active:checked + .menu-btn:after {
+	transform: rotate(-45deg);
+  border-color: #fff;
+}
+.wrapper ul{
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  height: 90%;
+  transform: translate(-50%, -50%);
+  list-style: none;
+  text-align: center;
+}
+.wrapper ul li{
+  height: 10%;
+  margin: 15px 0;
+}
+.wrapper ul li a{
+  text-decoration: none;
+  font-size: 30px;
+  font-weight: 500;
+  padding: 5px 30px;
+  color: #fff;
+  border-radius: 50px;
+  position: absolute;
+  line-height: 50px;
+  margin: 5px 30px;
+  opacity: 0;
+  transition: all 0.3s ease;
+  transition: transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.wrapper ul li a:after{
+  position: absolute;
+  content: "";
+  background: #fff;
+   /*background: linear-gradient(#14ffe9, #ffeb3b, #ff00e0);*/
+  /*background: linear-gradient(375deg, #1cc7d0, #2ede98);*/
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  border-radius: 50px;
+  transform: scaleY(0);
+  z-index: -1;
+  transition: transform 0.3s ease;
+}
+.wrapper ul li a:hover:after{
+  transform: scaleY(1);
+}
+.wrapper ul li a:hover{
+  color: #1a73e8;
+}
+input[type="checkbox"]{
+  display: none;
+}
+.content{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  text-align: center;
+  width: 100%;
+  color: #202020;
+}
+.content .title{
+  font-size: 40px;
+  font-weight: 700;
+}
+.content p{
+  font-size: 35px;
+  font-weight: 600;
+}
+
+#active:checked ~ .wrapper ul li a{
+  opacity: 1;
+}
+.wrapper ul li a{
+  transition: opacity 1.2s, transform 1.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transform: translateX(100px);
+}
+#active:checked ~ .wrapper ul li a{
+	transform: none;
+	transition-timing-function: ease, cubic-bezier(.1,1.3,.3,1); /* easeOutBackを緩めた感じ */
+   transition-delay: .6s;
+  transform: translateX(-100px);
+}
+
+.footer{
+  padding-top: 3%;
+  padding-bottom: 1%;
+  background-color: #e9edff16;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.logout-btn{
+  background-color: #e9edff07;
+  width: 82%;
+  margin-bottom: 5%;
+}
+
+.logout-btn p{
+  margin-top: 3%;
+  font-size: 110%;
+  color: #e2e2e2;
+}
+
+@media screen and (max-width: 992px) {
+
+}
+
+@media screen and (max-width: 600px) {
+  .Loan_card__title {
+    padding: 5% ;
+    color: #e2e2e2;
+    font-size: 200%;
+  }
+
+  .pricing-main{
+    font-size: 120%;
+  }
+
+  .pricing-main span{
+    font-size: 300%;
+  }
+}
+
+.loading {
+  display: none;
+  justify-content: center;
+}
+
+.loading::after {
+  content: "";
+  width: 100px;
+  height: 100px;
+  border: 15px solid #dddddd;
+  border-top-color: #009579;
+  border-radius: 50%;
+  animation: loading 1s linear infinite;
+}
+
+@keyframes loading {
+  to {
+    transform: rotate(1turn);
+  }
 }

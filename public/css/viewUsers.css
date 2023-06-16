@@ -1,0 +1,54 @@
+body{
+    font-family: 'Nova Mono', monospace;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .topic{
+      padding:  10% 0% 0% 0%;
+      text-align: center;
+  }
+  
+  .user-content {
+    display: grid;  
+    justify-items: center;
+    width: 100%;
+  }
+  
+  .loan {
+      background-color: #ffffffd2;
+      border-radius: 10px;
+      color: black;
+      box-shadow: 0 10px 10px rgba(196, 196, 196, 0.2);
+      display: flex;
+      width: 85%;
+      font-size: 70%;
+      margin:2% 0% 2% 0%;
+  }
+  
+  .loan h3 {
+      letter-spacing: 1px;
+      margin: 10px 0;
+  }
+  
+  .loan-preview {
+      border-radius: 10px;
+      width: 50%;
+      padding: 10%;
+  }
+  
+  .loan-amount {
+      padding: 10%;
+      text-align: right;
+      width: 50%;
+  }
+  
+  .debit{
+      color:green;
+  }
+  
+  .credit{
+      color:red;
+  }
+  
+  /* ============= PAY Button ================ */
+  

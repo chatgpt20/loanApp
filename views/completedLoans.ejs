@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Completed Lons</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nova+Mono&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/completedLoans.css">
+	<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <H2 class="topic">Completed Loans</H2>
+
+    <div class="loan-details">
+    
+
+        <div class="user-dropdown-container">
+            <select class="user-dropdown" name="users" id="UserSelector">
+                <option value="all">All</option>
+                <% for (let key in chooseUser) { %>
+                    <option value="<%= key %>"><%= chooseUser[key] %></option>
+                  <% } %>
+              </select>
+        </div>
+    
+        <% for (let i = 0; i<loans.length; i++) { %>
+            <% if (loans[i].type == 'Credit') { %>
+                <div class="loan <%= loans[i].user %>">
+                    <div class="loan-preview">
+                        <h3><%= loans[i].description %></h3>
+                        <p><%= loans[i].completedDateString %></p>
+                    </div>
+                    <div class="loan-amount credit">
+                        <h2>Rs.<%= loans[i].amount %></h2>
+                        <a class="pay-btn-hide" href=""><button class="pay-btn">PAY</button></a>
+                    </div>
+                </div>
+            <%} else { %>
+                <div class="loan <%= loans[i].user %>">
+                    <div class="loan-preview">
+                        <h3><%= loans[i].description %></h3>
+                        <p><%= loans[i].completedDateString %></p>
+                    </div>
+                    <div class="loan-amount debit">
+                        <h2>Rs.<%= loans[i].amount %></h2>
+                        <a class="pay-btn-hide" href=""><button class="pay-btn">PAY</button></a>
+                    </div>
+                </div>
+            <% } %>
+          <% } %>
+</div>
+
+<script>
+
+    const paidSelector = document.getElementById('UserSelector');
+    
+        paidSelector.addEventListener("change", (e) => {
+            const selectedUser = paidSelector.value;
+            const transactions = document.querySelectorAll('.loan');
+    
+          if (selectedUser != 'all') {
+    
+          
+    
+          Array.from(transactions).forEach((transaction) => {
+          
+            transaction.style.display = "none";;
+    
+        });
+    
+        
+    
+    
+        const selectedTransactions = document.querySelectorAll('.' + selectedUser);
+    
+          Array.from(selectedTransactions).forEach((selectedTransaction) => {
+          
+            selectedTransaction.style.display = "";
+    
+        });
+        } else {
+            Array.from(transactions).forEach((transaction) => {
+          
+          transaction.style.display = "";;
+    
+      });
+        }
+    
+    });
+    </script>
+
+</body>
+</html>

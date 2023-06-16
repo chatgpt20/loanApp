@@ -1,0 +1,115 @@
+body{
+    font-family: 'Nova Mono', monospace;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .topic{
+      padding:  10% 0% 0% 0%;
+      text-align: center;
+  }
+  
+  .loan-details{
+      padding: 0% 5% 0% 5%;
+  }
+  
+  .loan-sum{
+      background-color: #ffffffa9;
+      border-radius: 10px;
+      background-color: rgb(5, 47, 0);
+      color: rgb(222, 221, 221);
+      display: flex;
+      width: 100%;
+      font-size: 70%;
+      margin-bottom: 5%;
+  }
+  
+  .cred-tot{
+      border-radius: 10px;
+      background-color: rgb(62, 1, 1);
+      text-align: center;
+      width: 50%;
+      padding: 2%;
+  }
+  
+  .debit-tot{
+      border-radius: 10px;
+      text-align: center;
+      width: 50%;
+      padding: 2%;
+  }
+  
+  .user-dropdown-container{
+      margin: 8% 0% 8% 0%;
+      align-content: center;
+      width: 100%;
+  }
+  
+  .user-dropdown{
+      border-style: none;
+      border-radius: 0%;
+      border-radius: 10px;
+      height:40px;
+      width: 100%;
+      padding: 0% 5% 0% 5%;
+  }
+  
+  .loan {
+      background-color: #ffffffd2;
+      border-radius: 10px;
+      color: black;
+      box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+      display: flex;
+      width: 100%;
+      font-size: 70%;
+      margin:2% 0% 2% 0%;
+  }
+  
+  .loan h3 {
+      letter-spacing: 1px;
+      margin: 10px 0;
+  }
+  
+  .loan-preview {
+      border-radius: 10px;
+      width: 75%;
+      padding: 5%;
+  }
+  
+  .loan-amount {
+      padding: 5%;
+      text-align: right;
+      width: 25%;
+  }
+  
+  .debit{
+      color:green;
+  }
+  
+  .credit{
+      color:red;
+  }
+  
+  /* ============= PAY Button ================ */
+  .pay-btn-hide{
+      visibility: hidden;
+  }
+  .pay-btn {
+      margin-right:inherit;
+      background:linear-gradient(to bottom, #539f15 5%, #449600 100%);
+      border-radius:6px;
+      display:inline-block;
+      cursor:pointer;
+      color:#e2e2e2;
+      font-family:Trebuchet MS;
+      font-size:13px;
+      font-weight:bold;
+      border-style: none;
+      padding:6px 27px;
+      text-decoration:none;
+      text-shadow:0px 1px 0px #aade7c;
+  }
+  .pay-btn:hover {
+      background:linear-gradient(to bottom, #484848 5%, #434343 100%);
+  }
+  
+  /* ============= PAY Button ================ */

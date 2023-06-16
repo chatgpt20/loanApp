@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payments</title>
+    <!-- Styles -->
+	<link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/payment.css">
+</head>
+<body>
+    <div class="card card-info">
+            <h2 class="amount-txt">Amount (Rs)</h2>
+            <h1 class="amount-num"><%= amount %></h1>
+            <div class="form">
+                <label for="amount">Paying Amount</label>
+                <input type="number" id="amount" name="amount" value="<%= amount %>">
+                    <button onclick="return sendData(<%= loanId %>)" class="pay-btn">Proceed Payment</button>
+            </div>
+    </div>
+
+
+<script>
+
+   async function sendData(loanId) {
+
+
+    const amountField = document.getElementById('amount');
+        try {
+            const res = await fetch('/payment',{
+                method: 'POST',
+                body: JSON.stringify({loanId:loanId,amount:amountField.value}),
+                headers: {'Content-Type' : 'application/json'}
+            });
+
+            const data = await res.json();
+            // console.log(data);
+
+            if (data.error) {
+              alert(data.error);
+            }
+
+            if (data.success) {
+              location.assign('/paymentSuccess');
+            }
+        } catch (err) {
+            console.log(err);
+        }
+
+        return false;
+    }
+    
+</script>
+</body>
+</html>

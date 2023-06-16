@@ -31,7 +31,7 @@
           <div class="row g-3">
 
             <div class="col-12">
-              <label for="country" class="form-label">Name</label>
+              <label for="name" class="form-label">Name</label>
               <select name="name" class="form-select" id="name" required>
                 <option value="">Choose...</option>
                 <% for (let key in chooseUser) { %>
@@ -53,9 +53,16 @@
               </div>
             </div>
 
-            <div class="col-12">
+            <!-- <div class="col-12">
               <label for="amount" class="form-label">Amount</label>
               <input type="text" class="form-control" name="amount" id="amount" placeholder="Amount" required>
+              <div class="invalid-feedback">
+                Please enter a valid amount.
+              </div>
+            </div> -->
+            <div class="col-12">
+              <label for="amount" class="form-label">Amount</label>
+              <input type="number" class="form-control" name="amount" id="amount" placeholder="0.00">
               <div class="invalid-feedback">
                 Please enter a valid amount.
               </div>
@@ -63,7 +70,7 @@
 
       
 
-            <button class="btn btn-primary btn-lg main-btn" type="submit">Confirm </button>
+            <button id='submit-btn' class="btn btn-primary btn-lg main-btn" type="submit">Confirm </button>
 
           </div>
 
@@ -79,6 +86,63 @@
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
+
+<script>
+
+const form = document.querySelector('form');
+    form.addEventListener('submit',async (e) => {
+        e.preventDefault();
+
+        const submit_btn = document.querySelector('#submit-btn')
+
+    const name = form.name.value;
+    const description = form.description.value;
+    const amount = form.amount.value;
+
+      if (description === '') {
+        const descInput = document.querySelector('#desc');
+        descInput.setCustomValidity("Invalid field.");
+      }
+
+      if (description !== '') {
+        const descInput = document.querySelector('#desc');
+        descInput.setCustomValidity("");
+      }
+
+      
+
+      if (name != '' && description != '' && amount != '' && amount != 0) {
+        // console.log('hi1');
+        try {
+          const res = await fetch('/addloan',{
+              method: 'POST',
+              body: JSON.stringify({name:name,description:description,amount:amount}),
+              headers: {'Content-Type' : 'application/json'}
+          });
+          // console.log('hi2');
+          const data = await res.json();
+          // console.log(data);
+          
+
+          if (data?.err) {
+              alert(data.err);
+          }
+
+          if (data?.success) {
+            console.log(data.success);
+            submit_btn.disabled = true;
+            location.reload();
+          }
+
+          // if (data.user) {
+          //   location.assign('/');
+          // }
+      } catch (err) {
+          console.log(err);
+      }
+      }
+    });
+</script>
 
 <script src="js/addloan.js"></script>
   </body>
