@@ -47,7 +47,7 @@
     <section class="home-body-bg">
       <div class="main-btn-container">
         <div class="button-card article-wrapper">
-          <a href="/addloan">
+          <a href="/addloan" id="addloan">
           <div>
             <i class="fa-solid fa-circle-plus fa-2xl" style="color: #f7f7f7;"></i>
           </div>
@@ -57,7 +57,7 @@
         </a>
         </div>
         <div class="button-card article-wrapper">
-          <a href="/createevent">
+          <a href="/createevent" id="createevent">
             <div>
               <i class="fa-regular fa-calendar-plus fa-2xl" style="color: #f7f7f7;"></i>
             </div>
@@ -72,14 +72,14 @@
               <i class="fa-solid fa-hand-holding-dollar fa-2xl" style="color: #f7f7f7;"></i>
             </div>
             <div class="article-body">
-              <p>Pay<br>Lone</p>
+              <p>Pay<br>Loan</p>
             </div>
           </a>
         </div>
       </div>
       <div class="main-btn-container">
         <div class="button-card article-wrapper">
-          <a href="/completedloans">
+          <a href="/completedloans" id="completedloans">
           <div>
             <i class="fa-solid fa-list fa-2xl" style="color: #ffffff;"></i>
           </div>
@@ -89,7 +89,7 @@
           </a>
         </div>
         <div class="button-card article-wrapper">
-          <a href="/viewevents">
+          <a href="/viewevents" id="viewevents">
           <div>
             <i class="fa-solid fa-street-view fa-2xl" style="color: #ffffff;"></i>
           </div>
@@ -99,7 +99,7 @@
           </a>
         </div>
         <div class="button-card article-wrapper">
-          <a href="/viewusers">
+          <a href="/viewusers" id="viewusers">
           <div>
             <i class="fa-solid fa-user fa-2xl" style="color: #ffffff;"></i>
           </div>
@@ -125,6 +125,12 @@
 
   <script>
     const payLoanBtn = document.getElementById('payloan');
+    const addLoanBtn = document.getElementById('addloan');
+    const createEventBtn = document.getElementById('createevent');
+    const completedLoanBtn = document.getElementById('completedloans');
+    const viewEventBtn = document.getElementById('viewevents');
+    const viewUsersBtn = document.getElementById('viewusers');
+
     const loading = document.querySelector('.loading');
     const mainContent = document.querySelector('.main-body');
 
@@ -133,6 +139,34 @@
       displayLoading();
 
 });
+    addLoanBtn.addEventListener("click", (e) => {
+
+    displayLoading();
+
+    });
+    createEventBtn.addEventListener("click", (e) => {
+
+    displayLoading();
+
+    });
+
+    completedLoanBtn.addEventListener("click", (e) => {
+
+    displayLoading();
+
+    });
+
+    viewEventBtn.addEventListener("click", (e) => {
+
+    displayLoading();
+
+    });
+
+    viewUsersBtn.addEventListener("click", (e) => {
+
+    displayLoading();
+
+    });
 
 function displayLoading() {
 
