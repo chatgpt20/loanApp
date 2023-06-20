@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="css/payment.css">
 </head>
 <body>
-    <div class="card card-info">
+    <div class="loading"></div> 
+    <div class="card card-info" id="main-content">
             <h2 class="amount-txt">Amount (Rs)</h2>
             <h1 class="amount-num"><%= amount %></h1>
             <div class="form">
@@ -27,6 +28,13 @@
 
 
     const amountField = document.getElementById('amount');
+
+    const loading = document.querySelector('.loading');
+    const mainContent = document.getElementById('main-content');
+
+    loading.style.display = 'flex';
+    mainContent.style.display = 'none';
+
         try {
             const res = await fetch('/payment',{
                 method: 'POST',
@@ -35,6 +43,9 @@
             });
 
             const data = await res.json();
+
+            loading.style.display = 'none';
+            mainContent.style.display = '';
             // console.log(data);
 
             if (data.error) {
