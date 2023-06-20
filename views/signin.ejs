@@ -13,8 +13,9 @@
     <!-- Custom styles for this template -->
     <link href="css/sign-in.css" rel="stylesheet" type="text/css">
   </head>
-  <body class="text-center">   
-<main class="form-signin w-100 m-auto">
+  <body class="text-center">
+    <div class="loading"></div> 
+<main class="form-signin w-100 m-auto" id="main-content">
   <form>
     <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
@@ -39,8 +40,15 @@
 
 <script>
     const form = document.querySelector('form');
+
+    const loading = document.querySelector('.loading');
+    const mainContent = document.getElementById('main-content');
+
     form.addEventListener('submit',async (e) => {
         e.preventDefault();
+
+        loading.style.display = 'flex';
+        mainContent.style.display = 'none';
 
         const username = form.username.value;
         const password = form.password.value;
@@ -55,6 +63,9 @@
             });
 
             const data = await res.json();
+
+            loading.style.display = 'none';
+            mainContent.style.display = '';
 
             if (data.error) {
               alert(data.error);
