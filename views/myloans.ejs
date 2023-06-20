@@ -12,6 +12,8 @@
 	<link rel="stylesheet" href="css/main.css">
 </head>
 <body>
+	<div class="loading"></div>
+  <div id="main-content">
     <H2 class="topic">Pay My Loans</H2>
 
     <div class="loan-details">
@@ -43,7 +45,7 @@
 				</div>
 				<div class="loan-amount credit">
 					<h2>Rs.<%= userTransactions[i].amount %></h2>
-					<a class="" href="/payment?loanId=<%=userTransactions[i].loanId%>&amount=<%=userTransactions[i].amount%>"><button class="pay-btn">PAY</button></a>
+					<a class="" id="paymentbtn" href="/payment?loanId=<%=userTransactions[i].loanId%>&amount=<%=userTransactions[i].amount%>"><button class="pay-btn">PAY</button></a>
 				</div>
 			</div>
 		<%} else { %>
@@ -60,11 +62,22 @@
 		<% } %>
 	  <% } %>
 
+   </div>
 </div>
 
 <script>
 
 const paidSelector = document.getElementById('UserSelector');
+const paymentBtn = document.getElementById('paymentbtn');
+
+const loading = document.querySelector('.loading');
+const mainContent = document.getElementById('main-content');
+
+paymentBtn.addEventListener("click", (e) => {
+
+	displayLoading();
+
+	});
 
     paidSelector.addEventListener("change", (e) => {
 		const selectedUser = paidSelector.value;
@@ -76,7 +89,7 @@ const paidSelector = document.getElementById('UserSelector');
 
       Array.from(transactions).forEach((transaction) => {
       
-        transaction.style.display = "none";;
+        transaction.style.display = "none";
 
     });
 
@@ -99,6 +112,17 @@ const paidSelector = document.getElementById('UserSelector');
 	}
 
 });
+
+function displayLoading() {
+
+loading.style.display = 'flex';
+  mainContent.style.display = 'none';
+
+setTimeout(() => {
+  loading.style.display = 'none';
+  mainContent.style.display = '';
+},4000);
+}
 </script>
 
 </body>
