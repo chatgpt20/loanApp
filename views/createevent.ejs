@@ -15,8 +15,8 @@
     <link href="css/createevent.css" rel="stylesheet">
   </head>
   <body class="bg-body-tertiary">
-    
-<div class="container">
+    <div class="loading"></div>
+<div class="container" id="main-content">
   <main>
     <div class="py-5 text-center">
       <img class="d-block mx-auto mb-4" src="https://cdn-icons-png.flaticon.com/512/1680/1680012.png" alt="" width="72">
@@ -90,6 +90,10 @@
 
 <script>
   const form = document.querySelector('form');
+
+  const loading = document.querySelector('.loading');
+  const mainContent = document.getElementById('main-content');
+
     form.addEventListener('submit',async (e) => {
         e.preventDefault();
 
@@ -117,7 +121,8 @@
       
 
       if (name != '' && description != '' && amount != '' && amount != 0 && paidUser != '' && tickedusers.length != 0) {
-
+        loading.style.display = 'flex';
+        mainContent.style.display = 'none';
         try {
           const res = await fetch('/createevent',{
               method: 'POST',
@@ -126,6 +131,9 @@
           });
 
           const data = await res.json();
+
+          loading.style.display = 'none';
+          mainContent.style.display = '';
           console.log(data);
           
 
