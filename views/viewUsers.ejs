@@ -17,7 +17,7 @@
     <div class="user-content">
 
     <% for (let i = 0; i<users.length; i++) { %>
-		<% if (users[i].amount > 0) { %>
+		<% if (users[i].amount >= 0) { %>
 			<div class="loan">
                 <div class="loan-preview">
                     <h3><%= users[i].user %></h3>
