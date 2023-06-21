@@ -12,13 +12,14 @@ module.exports.payloan_get = async (req,res) => {
   var userTransactions = [];
 
   try {
+    
     userSnapshots = await users.get();
     userSnapshots.forEach((document) => {
       if (document.data()["UserId"] != "admin" && document.data()["UserId"] != currentUser) {
         loanUsers[document.data()["UserId"]] = document.data()["Name"];
       }
     });
-
+    
     const transactionSnapshotsDebit = await transactionRef
       .where("User", "==", currentUser)
       .get();
@@ -36,7 +37,7 @@ module.exports.payloan_get = async (req,res) => {
       const loanDoc = transactionDebitDocs[i];
 
 
-      transactionDebitDetails = {
+      var transactionDebitDetails = {
         loanId: loanDoc.data()["LoanId"],
         amount: loanDoc.data()["Amount"],
         user:loanDoc.data()['OtherUser'],
@@ -46,7 +47,6 @@ module.exports.payloan_get = async (req,res) => {
       const loansSnapshot = await loanRef
         .where("Id", "==", transactionDebitDetails.loanId)
         .get();
-
 
       loansSnapshot.forEach((loanDetails) => {
         transactionDebitDetails.description = loanDetails.data()["Description"];
@@ -67,14 +67,15 @@ module.exports.payloan_get = async (req,res) => {
         .where("LoanId", "==", transactionDebitDetails.loanId)
         .get();
 
+        var receivedDocIds = [];
+
       if (receivedSnapshot.empty) {
-        console.log("No Paid Transactions.");
+        // console.log("No Paid Transactions.");
       } else {
         receivedSnapshot.forEach((receivedDoc) => {
-          console.log(receivedDoc.data()["Amount"]);
-          transactionDebitDetails.amount =
-            transactionDebitDetails.amount - receivedDoc.data()["Amount"];
-            paidDocIds.push(receivedDoc.id);
+          // console.log(receivedDoc.data()["Amount"]);
+          transactionDebitDetails.amount = transactionDebitDetails.amount - receivedDoc.data()["Amount"];
+            receivedDocIds.push(receivedDoc.id);
         });
       }
 
@@ -104,7 +105,7 @@ module.exports.payloan_get = async (req,res) => {
 
       const transDocId = loanDoc.id;
 
-      transactionDetails = {
+      var transactionDetails = {
         loanId: loanDoc.data()["LoanId"],
         amount: (loanDoc.data()["Amount"] * -1),
         user:loanDoc.data()['User'],
@@ -170,6 +171,7 @@ module.exports.payloan_get = async (req,res) => {
 
       totalCredit = totalCredit + transactionDetails.amount;
       userTransactions.push(transactionDetails);
+
       }
     }
 
