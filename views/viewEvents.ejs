@@ -12,18 +12,66 @@
 	<link rel="stylesheet" href="css/main.css">
 </head>
 <body>
+    <div class="loading"></div>
+    <div id="main-content">
     <H2 class="topic">Events</H2>
 
     <div class="user-content">
 
     <% for (let i = 0; i<events.length; i++) { %>
+
+        <%  if (!events[i].delete) { %>
         <div class="loan">
             <h2><%= events[i].name %></h2>
             <h1 class="amount">Rs.<span><%= events[i].amount %></span></h1>
             <h3><%= events[i].dateString %></h3>
         </div>
+        <% } else { %>
+        <div class="loan">
+            <h2><%= events[i].name %></h2>
+            <h1 class="amount">Rs.<span><%= events[i].amount %></span></h1>
+            <h3><%= events[i].dateString %></h3>
+            <button class="delete-btn" onclick="deleteEvent(<%= events[i].eventId %>)">Delete</button>
+        </div>
+        <% } %>
     <% } %>
 </div>
+</div>
+
+<script>
+    const loading = document.querySelector('.loading');
+    const mainContent = document.getElementById('main-content');
+    async function deleteEvent (eventId) {
+        console.log(eventId);
+        loading.style.display = '';
+        mainContent.style.display = 'none';
+
+        try {
+            const res = await fetch('/deleteevent1',{
+                method: 'POST',
+                body: JSON.stringify({event:eventId}),
+                headers: {'Content-Type' : 'application/json'}
+            });
+
+            const data = await res.json();
+            console.log(data);
+
+            loading.style.display = 'none';
+            mainContent.style.display = '';
+
+            if (data.err) {
+              alert(data.error);
+            }
+
+            if (data.success) {
+              location.reload();
+            }
+        } catch (err) {
+            alert(err);
+        }
+
+    }
+</script>
 
 </body>
 </html>
