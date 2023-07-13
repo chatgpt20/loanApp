@@ -154,8 +154,10 @@ module.exports.dashboard_get = async (req, res) => {
   
     otherEvents.forEach((doc) => {
       var eventDetails = {
+        eventId: doc.data()['Id'],
         name: doc.data()['Name'],
-        amount: doc.data()['Amount']
+        amount: doc.data()['Amount'],
+        delete: false
       };
   
       const createdDate = doc.data()["CreatedDate"].toDate();
@@ -170,8 +172,10 @@ module.exports.dashboard_get = async (req, res) => {
   
     paidEvents.forEach((doc) => {
       var eventDetails = {
+        eventId: doc.data()['Id'],
         name: doc.data()['Name'],
-        amount: doc.data()['Amount']
+        amount: doc.data()['Amount'],
+        delete: true
       };
   
       const createdDate = doc.data()["CreatedDate"].toDate();
