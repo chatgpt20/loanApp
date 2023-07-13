@@ -10,8 +10,15 @@ body {
   align-items: center;
   padding-top: 40px;
   padding-bottom: 40px;
-  background-color: #f5f5f5;
   font-family: 'Roboto', sans-serif;
+}
+
+.checkbox{
+  margin: 5% 0% 5% 0%;
+}
+
+.header-txt{
+  padding-bottom: 10%;
 }
 
 .form-signin {
@@ -33,6 +40,29 @@ body {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+
+.form-control{
+  background-color: black;
+  margin-bottom: 5%;
+}
+
+.form-floating ::after{
+  background-color: black;
+  color: aliceblue;
+  margin-bottom: 5%;
+}
+
+.copyright{
+  padding: 10% 0% 10% 0%;
+  font-size: 80%;
+  color: rgb(158, 158, 158);
+}
+
+.floatingInput::after{
+  background-color: black;
+  color: aliceblue;
+  margin-bottom: 5%;
 }
 
 .loading {
