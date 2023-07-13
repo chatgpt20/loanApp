@@ -36,3 +36,11 @@ body{
       color: #031475;
   }
   
+  .delete-btn{
+    background-color: #c53218;
+    color: aliceblue;
+    min-width: 50%;
+    border-style: none;
+    border-radius: 10px;
+    padding: 2%;
+  }
