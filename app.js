@@ -10,6 +10,7 @@ const authRoutes = require("./routes/authRoutes");
 const paymentRoutes = require("./routes/paymentRoutes");
 const viewRoutes = require("./routes/viewRoutes");
 const otherRoutes = require("./routes/otherRoutes");
+const deleteRoutes = require("./routes/deleteRoutes");
 
 // ----------------------------- Middilewares -----------------------------------------------
 const { requireAuth } = require("./middleware/authMiddleware");
@@ -28,6 +29,7 @@ app.use(authRoutes);
 app.use(paymentRoutes);
 app.use(viewRoutes);
 app.use(otherRoutes);
+app.use(deleteRoutes);
 
 app.listen(3000, function () {
   console.log("Server is running on port 3000");
